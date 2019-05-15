@@ -9,6 +9,7 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolb
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     MatListModule,
     MatToolbarModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
     
   ],
   providers: [],

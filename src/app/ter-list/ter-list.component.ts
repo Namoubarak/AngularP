@@ -10,7 +10,7 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 export class TerListComponent implements OnInit {
   terrains: Array<Terrain>;
   dataSource:any;
-  displayedColumns: string[] = ['Nom', 'Lieu'];
+  displayedColumns: string[] = ['nom', 'lieu'];
   @ViewChild(MatPaginator) paginator: MatPaginator;
   constructor(private tss:TerrainService) { }
 
