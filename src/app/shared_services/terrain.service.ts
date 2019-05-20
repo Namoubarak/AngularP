@@ -11,4 +11,8 @@ export class TerrainService {
   getAll(): Observable<any> {
     return this.http.get('//localhost:8080/terrains');
   }
+  remove(id:string){
+    
+   return this.http.delete('//localhost:8080/terrains/'+id);
+  }
 }

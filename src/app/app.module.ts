@@ -10,10 +10,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
+import { ArbitreComponent } from './arbitre/arbitre.component';
+import { MatcheComponent } from './matche/matche.component';
+import { JoueurComponent } from './joueur/joueur.component';
 @NgModule({
   declarations: [
     AppComponent,
-    TerListComponent
+    TerListComponent,
+    ArbitreComponent,
+    MatcheComponent,
+    JoueurComponent
   ],
   imports: [
     BrowserModule,
