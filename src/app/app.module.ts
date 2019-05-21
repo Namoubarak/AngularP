@@ -13,13 +13,16 @@ import { MatPaginatorModule } from '@angular/material';
 import { ArbitreComponent } from './arbitre/arbitre.component';
 import { MatcheComponent } from './matche/matche.component';
 import { JoueurComponent } from './joueur/joueur.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { AddTerdiaComponent } from './add-terdia/add-terdia.component';
 @NgModule({
   declarations: [
     AppComponent,
     TerListComponent,
     ArbitreComponent,
     MatcheComponent,
-    JoueurComponent
+    JoueurComponent,
+    AddTerdiaComponent
   ],
   imports: [
     BrowserModule,
@@ -32,8 +35,11 @@ import { JoueurComponent } from './joueur/joueur.component';
     MatListModule,
     MatToolbarModule,
     MatTableModule,
-    MatPaginatorModule
-    
+    MatPaginatorModule,
+    MatDialogModule,
+  ],
+  entryComponents:[
+    AddTerdiaComponent,
   ],
   providers: [],
   bootstrap: [AppComponent]
