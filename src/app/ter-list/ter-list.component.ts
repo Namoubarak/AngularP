@@ -3,8 +3,9 @@ import {TerrainService} from '../shared_services/terrain.service';
 import { Terrain } from './terrain';
 import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import {AddTerdiaComponent} from '../add-terdia/add-terdia.component';
+
 
 
 @Component({
@@ -25,12 +26,21 @@ export class TerListComponent implements OnInit {
               public dialog: MatDialog) { }
   
  openDialog(): void {
-    const dialogRef = this.dialog.open(AddTerdiaComponent, {
+    //const dialogRef = this.dialog.open(AddTerdiaComponent, {
       
-    });  
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    //});  
+    //dialogRef.afterClosed().subscribe(result => {
+    //  console.log('The dialog was closed');
+    //});
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose=true;
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(AddTerdiaComponent, dialogConfig);
+    dialogRef.afterClosed().subscribe(
+      data =>{this.tss.save(data);}
+    );
   }
    
   
@@ -44,7 +54,7 @@ export class TerListComponent implements OnInit {
   
 
   gotoList() {
-    this.router.navigate(['/terrains']);
+    this.router.navigateByUrl('//localhost:8080/terrains');
   }
 
   remove(id:string){

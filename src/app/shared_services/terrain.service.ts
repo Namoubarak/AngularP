@@ -9,19 +9,28 @@ export class TerrainService {
   terrain={
     nom:'',
     lieu:''
-
   }
+  url='//localhost:8080/terrains'
+  
+
   constructor(private http: HttpClient) { }
   getAll(): Observable<any> {
-    return this.http.get('//localhost:8080/terrains');
+    return this.http.get(this.url);
   }
   remove(id:string){
     
-   return this.http.delete('//localhost:8080/terrains/'+id);
+   return this.http.delete(this.url+'/'+id);
   }
-  save(nom,lieu){
-    this.terrain.nom=nom;
-    this.terrain.lieu=lieu;
-    return this.http.post('//localhost:8080/terrains',this.terrain).toPromise;
+  save(data :any){
+    this.terrain.nom=data.nom;
+    this.terrain.lieu=data.lieu;
+    const options = {headers: {'Content-Type': 'application/json'}};
+    console.log('data',this.terrain);
+    return this.http.post(this.url,JSON.stringify(this.terrain),options).subscribe(data => {
+      console.log('data',this.terrain);
+  });
+  }
+  get(id:string):any{
+    return this.http.get(this.url+'/'+id);
   }
 }

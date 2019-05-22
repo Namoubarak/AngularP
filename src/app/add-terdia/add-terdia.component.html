@@ -1,17 +1,17 @@
 <h1 mat-dialog-title>Veuillez entrez les informations du terrain</h1>
-<div mat-dialog-content>
-  <p>Nom du terrain</p>
+<div mat-dialog-content [formGroup]="form">
+  <p></p>
   <mat-form-field>
-    <input matInput  name="data.lieu">
+    <input matInput  placeholder="Nom du terrain" formControlName="nom" required >
   </mat-form-field>
 
-  <p>Lieu du terrain</p>
+  <p></p>
   <mat-form-field>
-    <input matInput  name="data.lieu">
+    <input matInput  placeholder="Lieu du terrain" formControlName="lieu">
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Annuler</button>
-  <button mat-raised-button color="primary"  (click)="save(data.nom,data.lieu)">Poursuive!</button>
+  <button mat-raised-button color="primary"  (click)="save()">Poursuive!</button>
 </div>
  
