@@ -5,6 +5,7 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatDialog,MatDialogConfig} from '@angular/material/dialog';
 import {AddTerdiaComponent} from '../add-terdia/add-terdia.component';
+import {EditerTerComponent} from '../editer-ter/editer-ter.component';
 
 
 
@@ -16,6 +17,7 @@ import {AddTerdiaComponent} from '../add-terdia/add-terdia.component';
 export class TerListComponent implements OnInit {
   terrains: Array<Terrain>;
   dataSource:any;
+
   displayedColumns: string[] = ['nom', 'lieu','action'];
   name: string;
   lieu: string;
@@ -39,19 +41,44 @@ export class TerListComponent implements OnInit {
 
     const dialogRef = this.dialog.open(AddTerdiaComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(
-      data =>{this.tss.save(data);}
+      data =>{this.tss.save(data).then(r=>{
+        const data =  this.dataSource.data;
+        data.push(r)
+        this.dataSource.data = data;
+      });}
     );
+  }
+  openEdit(element): void {
+
+    const dialogRef = this.dialog.open(EditerTerComponent,
+                              {
+                                data:{
+                                    terrain : element
+                                     }
+                              });
+     dialogRef.afterClosed().subscribe(
+       data =>{console.log(data)}
+       );
+
+
   }
    
   
 
   ngOnInit() {
-   this.tss.getAll().subscribe( data => {
-     this.dataSource = new MatTableDataSource<Terrain>(data._embedded.terrains);
-     this.dataSource.paginator = this.paginator;
-    });
+   this.getData()
   }
-  
+  getData(){
+    this.tss.getAll().subscribe( data => {
+      this.dataSource = new MatTableDataSource<Terrain>(data._embedded.terrains);
+      this.dataSource.paginator = this.paginator;
+     });
+  }
+  removeItem(id:string){
+    const data =  this.dataSource.data;
+    data.splice(data.findIndex(x=>{x.id=id}),1)
+    this.dataSource.data = data;
+  }
 
   gotoList() {
     this.router.navigateByUrl('//localhost:8080/terrains');
@@ -59,9 +86,11 @@ export class TerListComponent implements OnInit {
 
   remove(id:string){
       console.log('href : ',id);
+      
     this.tss.remove(id).subscribe(result => {
-      this.gotoList();
+     this.removeItem(id)
     }, error => console.error(error));
+    
   }
   
 }

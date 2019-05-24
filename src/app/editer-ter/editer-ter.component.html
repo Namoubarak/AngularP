@@ -1,0 +1,16 @@
+<h1 mat-dialog-title>Veuillez entrez les informations du terrain</h1>
+<div mat-dialog-content [formGroup]="form">
+  <p></p>
+  <mat-form-field>
+    <input matInput  [(ngModel)]="nom" placeholder="Nom du terrain" formControlName="nom" value="{{ data.terrain.nom }}"required >
+  </mat-form-field>
+
+  <p></p>
+  <mat-form-field>
+    <input matInput  [(ngModel)]="lieu" placeholder="Lieu du terrain" formControlName="lieu" value="{{ data.terrain.lieu }}">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-raised-button color="primary"  (click)="save()">Poursuive!</button>
+</div>
