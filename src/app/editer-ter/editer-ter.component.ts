@@ -11,8 +11,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 export class EditerTerComponent implements OnInit {
   
   form = new FormGroup({
-    nom:new FormControl(),
-    lieu:new FormControl()
+    nom:new FormControl(''),
+    lieu:new FormControl('')
   })
   constructor( private router: Router,
     public dialogRef: MatDialogRef<EditerTerComponent>,
@@ -25,8 +25,7 @@ ngOnInit() {
 onNoClick(): void {
 this.dialogRef.close();
 }
-save(){
-
+onSubmit(){
 this.dialogRef.close(this.form.value);
 this.router.navigateByUrl('//localhost:8080/terrains');
 }

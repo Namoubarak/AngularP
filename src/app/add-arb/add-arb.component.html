@@ -1,0 +1,37 @@
+<h1 mat-dialog-title>Veuillez entrez les informations d'arbitre</h1>
+<div mat-dialog-content [formGroup]="form">
+  <p></p>
+  <mat-form-field>
+    <input matInput  placeholder="Nom d'arbitre " formControlName="nom" required >
+  </mat-form-field>
+
+  <p></p>
+  <mat-form-field>
+    <input matInput  placeholder="prenom d'arbitre" formControlName="prenom">
+  </mat-form-field>
+  <p></p>
+  <mat-form-field>
+    <input matInput  placeholder="CIN  d'arbitre" formControlName="cin">
+  </mat-form-field>
+  <p></p>
+
+  <mat-form-field>
+    <input matInput  placeholder="date de naissence d'arbitre" formControlName="date_naissance">
+  </mat-form-field>
+
+  <p></p>
+  <mat-form-field>
+    <input matInput  placeholder="Numero de licence d'arbitre" formControlName="n_license">
+  </mat-form-field>
+
+  <p></p>
+  <mat-form-field>
+    <input matInput  placeholder="photo d'arbitre" formControlName="photo">
+  </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-raised-button color="primary"  (click)="save()">Poursuive!</button>
+</div>
+ 

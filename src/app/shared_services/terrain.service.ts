@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Terrain } from '../ter-list/terrain';
 import axios from 'axios';
 @Injectable({
   providedIn: 'root'
@@ -23,6 +22,7 @@ export class TerrainService {
     
    return this.http.delete(this.url+'/'+id);
   }
+  
   save(data :any){
     this.terrain.nom=data.nom;
     this.terrain.lieu=data.lieu;
@@ -35,13 +35,15 @@ export class TerrainService {
     .catch(e=>console.log(e));
    
   }
+
   get(id:string):any{
     return this.http.get(this.url+'/'+id);
     
   }
   update(data :any,id:string){
-    return axios.patch(this.url+'/'+id,data).then(response=>{
-      console.log('data',data)
+    this.terrain.nom=data.nom;
+    this.terrain.lieu=data.lieu;
+    return axios.patch(this.url+'/'+id,this.terrain).then(response=>{
       return response.data
     });
     //const options = {headers: {'Content-Type': 'application/json'}};

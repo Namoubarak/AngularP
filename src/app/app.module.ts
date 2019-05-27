@@ -17,6 +17,8 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { AddTerdiaComponent } from './add-terdia/add-terdia.component';
 import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { EditerTerComponent } from './editer-ter/editer-ter.component';
+import { AddArbComponent } from './add-arb/add-arb.component';
+import { EditArbComponent } from './edit-arb/edit-arb.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,8 @@ import { EditerTerComponent } from './editer-ter/editer-ter.component';
     JoueurComponent,
     AddTerdiaComponent,
     EditerTerComponent,
+    AddArbComponent,
+    EditArbComponent,
   
     
   ],
@@ -48,7 +52,9 @@ import { EditerTerComponent } from './editer-ter/editer-ter.component';
   ],
   entryComponents:[
     AddTerdiaComponent,
-    EditerTerComponent
+    EditerTerComponent,
+    AddArbComponent,
+    EditArbComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

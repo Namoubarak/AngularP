@@ -57,14 +57,20 @@ export class TerListComponent implements OnInit {
                                      }
                               });
      dialogRef.afterClosed().subscribe(
-       data =>{console.log(data)}
+       data =>{this.tss.update(data,element.resourceId).then(r=>{
+        const data =  this.dataSource.data;
+        var index = data.indexOf(element);
+        if (index > -1) {
+            data.splice(index, 1);
+        }
+        data.push(r)
+        this.dataSource.data=data;
+       })
+      
+      }
        );
-
-
   }
    
-  
-
   ngOnInit() {
    this.getData()
   }
@@ -76,7 +82,7 @@ export class TerListComponent implements OnInit {
   }
   removeItem(id:string){
     const data =  this.dataSource.data;
-    data.splice(data.findIndex(x=>{x.id=id}),1)
+    data.splice(data.findIndex(x=>{x.id=id})-1,1)
     this.dataSource.data = data;
   }
 
