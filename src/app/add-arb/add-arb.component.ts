@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AddTerdiaComponent } from '../add-terdia/add-terdia.component';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 @Component({
   selector: 'app-add-arb',
@@ -32,6 +34,7 @@ export class AddArbComponent implements OnInit {
     this.dialogRef.close();
   }
   save(){
+    
     this.dialogRef.close(this.form.value);
     this.router.navigateByUrl('//localhost:8080/arbitres');
   }

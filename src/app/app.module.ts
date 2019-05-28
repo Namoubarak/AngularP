@@ -19,6 +19,12 @@ import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { EditerTerComponent } from './editer-ter/editer-ter.component';
 import { AddArbComponent } from './add-arb/add-arb.component';
 import { EditArbComponent } from './edit-arb/edit-arb.component';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule} from '@angular/material';
+import { DatePipe } from '@angular/common';
+import { SaisonComponent } from './saison/saison.component';
+import { AddSaisonComponent } from './add-saison/add-saison.component';
+import { EditSaisonComponent } from './edit-saison/edit-saison.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,6 +36,9 @@ import { EditArbComponent } from './edit-arb/edit-arb.component';
     EditerTerComponent,
     AddArbComponent,
     EditArbComponent,
+    SaisonComponent,
+    AddSaisonComponent,
+    EditSaisonComponent,
   
     
   ],
@@ -47,16 +56,21 @@ import { EditArbComponent } from './edit-arb/edit-arb.component';
     MatPaginatorModule,
     MatDialogModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+    
     
   ],
   entryComponents:[
     AddTerdiaComponent,
     EditerTerComponent,
     AddArbComponent,
-    EditArbComponent
+    EditArbComponent,
+    AddSaisonComponent,
+    EditSaisonComponent
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

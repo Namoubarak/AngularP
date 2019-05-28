@@ -1,3 +1,37 @@
-<p>
-  edit-arb works!
-</p>
+<form [formGroup]="form" (ngSubmit)="onSubmit()" >
+  <h1 mat-dialog-title>Veuillez modifier les informations du terrain</h1>
+  <div mat-dialog-content >
+    <p></p>
+    <mat-form-field>
+      <input matInput  [(ngModel)]="nom" placeholder="Nom d'arbitre " formControlName="nom" value="{{ data.arbitre.nom }}"required >
+    </mat-form-field>
+    <p></p>
+    <mat-form-field>
+      <input matInput  [(ngModel)]="prenom" placeholder="Prenom d'arbitre" formControlName="prenom" value="{{ data.arbitre.prenom }}">
+    </mat-form-field>
+
+    <p></p>
+    <mat-form-field>
+      <input matInput  [(ngModel)]="cin" placeholder="CIN d'arbitre" formControlName="cin" value="{{ data.arbitre.cin }}">
+    </mat-form-field>
+
+    <p></p>
+    <mat-form-field>
+      <input matInput  [(ngModel)]="date_naissance" placeholder="Date de naissance d'arbitre" formControlName="date_naissance" value="{{ data.arbitre.date_naissance | date : 'dd/MM/yyyy'}}">
+    </mat-form-field>
+
+    <p></p>
+    <mat-form-field>
+      <input matInput  [(ngModel)]="n_license" placeholder="N° de license d'arbitre" formControlName="n_license" value="{{ data.arbitre.n_license }}">
+    </mat-form-field>
+
+    <p></p>
+    <mat-form-field>
+      <input matInput  [(ngModel)]="photo" placeholder="photo d'arbitre" formControlName="photo" value="{{ data.arbitre.photo }}">
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Annuler</button>
+    <button type="submit" mat-raised-button color="primary"  >Poursuive!</button>
+  </div>
+  </form>

@@ -6,6 +6,7 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 import { AddArbComponent } from '../add-arb/add-arb.component';
 import { EditArbComponent } from '../edit-arb/edit-arb.component';
 
+
 export interface Arbitre{
   cin:string,
   date_naissance:string,
@@ -56,20 +57,18 @@ export class ArbitreComponent implements OnInit {
   }
   removeItem(id:string){
     const data =  this.dataSource.data;
-    data.splice(data.findIndex(x=>{x.id=id})-1,1)
+    data.splice(data.findIndex(x=>{x.id=id}),1)
     this.dataSource.data = data;
   }
   gotoList() {
     this.router.navigateByUrl('//localhost:8080/arbitres');
   }
   remove(id:string){
-    console.log('href : ',id);
-    
   this.tss.remove(id).subscribe(result => {
    this.removeItem(id)
   }, error => console.error(error));
   
-}
+  }
 openDialog(): void {
   //const dialogRef = this.dialog.open(AddTerdiaComponent, {
     
@@ -84,10 +83,11 @@ openDialog(): void {
 
   const dialogRef = this.dialog.open(AddArbComponent, dialogConfig);
   dialogRef.afterClosed().subscribe(
-    data =>{this.tss.save(data).then(r=>{
-      const data =  this.dataSource.data;
-      data.push(r)
-      this.dataSource.data = data;
+    data =>{
+      this.tss.save(data).then(r=>{
+        const data =  this.dataSource.data;
+        data.push(r)
+        this.dataSource.data = data;
     });}
   );
 }
@@ -96,7 +96,7 @@ openEdit(element): void {
   const dialogRef = this.dialog.open(EditArbComponent,
                             {
                               data:{
-                                  terrain : element
+                                  arbitre : element
                                    }
                             });
    dialogRef.afterClosed().subscribe(

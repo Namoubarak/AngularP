@@ -1,0 +1,12 @@
+<h1 mat-dialog-title>Veuillez entrez les informations du Saison</h1>
+<div mat-dialog-content [formGroup]="form">
+  <p></p>
+  <mat-form-field>
+    <input matInput  placeholder="Saison : " formControlName="label" required >
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Annuler</button>
+  <button mat-raised-button color="primary"  (click)="save()">Poursuive!</button>
+</div>
+ 

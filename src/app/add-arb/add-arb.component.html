@@ -15,10 +15,13 @@
   </mat-form-field>
   <p></p>
 
-  <mat-form-field>
-    <input matInput  placeholder="date de naissence d'arbitre" formControlName="date_naissance">
-  </mat-form-field>
 
+  <mat-form-field>
+    <input matInput [matDatepicker]="date_naissance" formControlName="date_naissance" placeholder="date de naissence d'arbitre">
+    <mat-datepicker-toggle matSuffix [for]="date_naissance"></mat-datepicker-toggle>
+    <mat-datepicker #date_naissance disabled="false" ></mat-datepicker>
+  </mat-form-field>
+  
   <p></p>
   <mat-form-field>
     <input matInput  placeholder="Numero de licence d'arbitre" formControlName="n_license">
