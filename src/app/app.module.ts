@@ -20,11 +20,16 @@ import { EditerTerComponent } from './editer-ter/editer-ter.component';
 import { AddArbComponent } from './add-arb/add-arb.component';
 import { EditArbComponent } from './edit-arb/edit-arb.component';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { MatNativeDateModule} from '@angular/material';
+import { MatNativeDateModule, MatSidenavModule} from '@angular/material';
 import { DatePipe } from '@angular/common';
 import { SaisonComponent } from './saison/saison.component';
 import { AddSaisonComponent } from './add-saison/add-saison.component';
 import { EditSaisonComponent } from './edit-saison/edit-saison.component';
+import {MatGridListModule} from '@angular/material/grid-list';
+
+import {MatIconModule} from '@angular/material/icon';
+import { MainNavComponent } from './main-nav/main-nav.component';
+import { LayoutModule } from '@angular/cdk/layout'; 
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,8 +44,7 @@ import { EditSaisonComponent } from './edit-saison/edit-saison.component';
     SaisonComponent,
     AddSaisonComponent,
     EditSaisonComponent,
-  
-    
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
@@ -58,8 +62,11 @@ import { EditSaisonComponent } from './edit-saison/edit-saison.component';
     FormsModule,
     ReactiveFormsModule,
     MatDatepickerModule,
-    MatNativeDateModule
-    
+    MatNativeDateModule,
+    MatIconModule,
+    LayoutModule,
+    MatSidenavModule,
+    MatGridListModule
     
   ],
   entryComponents:[

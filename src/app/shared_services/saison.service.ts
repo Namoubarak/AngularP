@@ -7,10 +7,7 @@ import axios from 'axios';
 })
 
 export class SaisonService {
-  saison={
-    label : ''
-  }
-
+  
 
   url='//localhost:8080/saisons'
   constructor(private http: HttpClient) { }
@@ -22,10 +19,10 @@ export class SaisonService {
    return this.http.delete(this.url+'/'+id);
   }
   save(data :any){
-    this.saison.label=data.nom;
+    
     const options = {headers: {'Content-Type': 'application/json'}};
     let saved = null;
-    return axios.post(this.url,this.saison)
+    return axios.post(this.url,data)
     .then(response=>{
       return response.data
     })
@@ -37,9 +34,9 @@ export class SaisonService {
     
   }
   update(data :any,id:string){
-    this.saison.label=data.label;
+   
   
-    return axios.patch(this.url+'/'+id,this.saison).then(response=>{
+    return axios.patch(this.url+'/'+id,data).then(response=>{
       return response.data
     });
     //const options = {headers: {'Content-Type': 'application/json'}};

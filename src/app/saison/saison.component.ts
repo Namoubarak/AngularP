@@ -39,7 +39,7 @@ export class SaisonComponent implements OnInit {
     }
     removeItem(id:string){
       const data =  this.dataSource.data;
-      data.splice(data.findIndex(x=>{x.id=id}),1)
+      data.splice(data.findIndex(x=>{x.id=id})-1,1)
       this.dataSource.data = data;
     }
     gotoList() {
@@ -67,6 +67,7 @@ export class SaisonComponent implements OnInit {
         data =>{
           this.tss.save(data).then(r=>{
           const data =  this.dataSource.data;
+          data.push(r)
           this.dataSource.data = data;
     
         });}
